@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Calculator</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+body,html{
+height:100%;
+}
+#calculatorBody{
+box-shadow:5px 0px 30px gray; 
+background:AliceBlue;
+padding:15px;
+border-radius:25px;
+}
+#Box{
+padding:20px 35px 20px 35px; 
+text-align:right;
+border:3px solid white; 
+border-radius:20px;
+box-shadow:inset 3px 2px 10px silver;
+font-size:15px; 
+font-weight:bold;
+outline:none;
+
+}
+.btn,#del,#Clr,#Special{
+border:none;
+padding:15px 25px; 
+margin:5px;
+font-size:20px;
+border-radius:45px;
+background:Snow;
+box-shadow:2px 3px 8px lightgray; 
+outline:none;
+color:#00CED1;
+margin-top:20px;
+}
+#set1{
+display:block;
+}
+#time{
+text-align:center;
+color:purple;
+transition:1s;
+}
+</style>
+</head>
+<body>
+<br/>
+<div id="calculatorBody">
+<p id="time"></p>
+<input type="text" placeholder="0" id="Box" disabled />
+<button onclick="del()" id="del">Del</button>
+<button onclick="remove()" id="Clr">Clr</button>
+
+<br/>
+<div id="set1">
+<button onclick="digit('1')" class="btn">1</button>
+<button  onclick="digit('2')"  class="btn">2</button>
+<button  onclick="digit('3')" class="btn">3</button>
+<button  onclick="inset('+')" class="btn">+</button><br/>
+<button  onclick="digit('4')" class="btn">4</button>
+<button  onclick="digit('5')" class="btn">5</button>
+<button onclick="digit('6')" class="btn">6</button>
+<button  onclick="inset('*')" class="btn">X</button><br/>
+<button onclick="digit('7')" class="btn">7</button>
+<button  onclick="digit('8')" class="btn">8</button>
+<button onclick="digit('9')" class="btn">9</button>
+<button  onclick="inset('-')" class="btn">-</button><br/>
+<button onclick="digit('0')" class="btn">0</button>
+<button onclick="calculate()" class="btn">=</button>
+<button  onclick="inset('/')" class="btn">/</button>
+<button onclick="digit('%')" class="btn">%</button>
+</div>
+<marquee><p>I hope you love it..<a href="https://www.facebook.com/Huntacode " target="_self">Visit me on facebook </a> 😁<b>EmediongEkoh</b><i> ...Sorry you had to use data to view this....</i></p></marquee>
+</div>
+
+<br/>
+<script>
+function digit(num){
+document.getElementById("Box").value+=num; 
+}
+function inset(special){
+document.getElementById("Box").value+=special; 
+}
+function calculate(){
+var input =document.getElementById("Box").value; 
+var output=eval(input);
+document.getElementById("Box").value=output;
+}
+function remove(){
+var store =document.getElementById("Box").value;
+var desk = store.length-1;
+var out=store.slice(0,desk);
+document.getElementById("Box").value=out;
+}
+function del(){
+document.getElementById("Box").value="";
+}
+
+var h,m,c,s;
+
+function timer(){
+var date = new Date();
+h=date.getHours();
+m=date.getMinutes();
+s=date.getSeconds();
+switch(h){
+case 0:
+c=12;
+break; 
+case 13:
+c=1;
+break; 
+case 14:
+c=2;
+break; 
+case 15:
+c=3;
+break; 
+case 16:
+c=4;
+break; 
+case 17:
+c=5;
+break; 
+case 18:
+c=6;
+break;
+case 19:
+c=7;
+break; 
+case 20:
+c=8;
+break; 
+case 21:
+c=9;
+break; 
+case 22:
+c=10;
+break;
+case 23:
+c=11;
+break; 
+default :
+c=h;
+break; 
+}
+
+document.getElementById("time").innerHTML=c+":"+m+":"+s; 
+}
+setInterval(timer,500);
+</script>
+</body>
+</html>
